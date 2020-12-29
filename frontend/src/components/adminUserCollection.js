@@ -23,7 +23,6 @@ const AdminUserList = ({dispatchUserListAction ,adminUserList } ) => {
 
     useEffect(async() => { dispatchUserListAction() } , [dispatchUserListAction] )
     console.log(adminUserList)
- 
 
 
 
@@ -103,8 +102,6 @@ const AdminUserList = ({dispatchUserListAction ,adminUserList } ) => {
                        
                        
                            Object.entries(adminUserList).map(([key, user], i) => (
-
-
                                 <tr key = {user.id}>
                                      <td>{user.id}</td>
                                     <td>{user.username}</td>
@@ -112,6 +109,7 @@ const AdminUserList = ({dispatchUserListAction ,adminUserList } ) => {
                                        Transaction Details
                                     </Link></td>
                                     <td>{user.total_amount}</td>
+                                    <td id ="total-balance"></td>
                        
                                 </tr>
                                     ))

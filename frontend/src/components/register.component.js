@@ -9,6 +9,7 @@ const RegisterForm = ({dispatchRegisterAction}) => {
     const [userName , setUserName ] = useState('');
     const [password , setPassword ] = useState('');
     const [account_type , setUserType ] = useState('user');
+   
     const [error, setError] = useState({ userName: false, password: false });
 
 

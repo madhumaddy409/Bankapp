@@ -9,10 +9,29 @@ const LoginForm = ({ dispatchloginAction}) => {
 
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState({ username: false, password: false });
+
+
+    const handleCancelForm = (event) => {
+        event.preventDefault();
+        setUserName('');
+        setPassword('');
+        setError({ username: false, password: false });
+    };
+
+    const isFormInvalid = () => (!username ||  !password);
+
+    const updateErrorFlags = () => {
+        const errObj = { username: false,  password: false };
+        if (!username) errObj.username = true;
+        if (!password) errObj.password = true;
+        setError(errObj);
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatchloginAction(username,password, 
+        if (isFormInvalid()) updateErrorFlags();
+        else dispatchloginAction(username,password, 
         () => toast.success("loagged in successfully"),
         (message) => toast.error(`Error: ${message}`))
     }
@@ -32,7 +51,8 @@ const LoginForm = ({ dispatchloginAction}) => {
                             placeholder="username"
                             value={username}
                             onChange={(e) => setUserName(e.target.value)}
-                            className="form-control" />
+                            className={`form-control ${error.username ? 'is-invalid' : ''}`} />
+                            <p className="invalid-feedback">Required</p>
                     </div>
 
                     <div className="form-group">
@@ -42,7 +62,8 @@ const LoginForm = ({ dispatchloginAction}) => {
                             placeholder="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="form-control" />
+                            className={`form-control ${error.password ? 'is-invalid' : ''}`} />
+                            <p className="invalid-feedback">Required</p>
                         
                     </div>
 
@@ -50,7 +71,7 @@ const LoginForm = ({ dispatchloginAction}) => {
                         Login | <i className="fas fa-sign-in-alt"></i>
                     </button>
 
-                    <button className="btn btn-outline-secondary">
+                    <button onClick={handleCancelForm} className="btn btn-outline-secondary">
                         Cancle | <i className="fas fa-times"></i>
                     </button>
 
