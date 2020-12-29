@@ -11,9 +11,14 @@ module.exports = {
     findById,
     login,
     userProfile,
-    allUsers
+    allUsers,
+    userFind
 };
 
+async function userFind(userName){
+    return  knex("user").where({username:userName}).first()
+
+}
 
 async function add(user){
     const [userId] = await knex("user").insert(user);

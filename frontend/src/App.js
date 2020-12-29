@@ -34,7 +34,7 @@ const App = ({ user , dispatchLogoutAction }) =>{
     <ToastContainer position="top-right" autoClose={2000}
     hideProgressBar transition={Slide} />
     <Spinner />
-      <Header isLoggedIn={user.isLoggedIn} userName = {user.userName} 
+      <Header isLoggedIn={user.isLoggedIn} userName = {user.userName} userid={user.userId}
       
       onLogout={dispatchLogoutAction}/>
       <div className="container my-5">
@@ -71,6 +71,7 @@ const App = ({ user , dispatchLogoutAction }) =>{
                   <Route exact path='/notes' component={Notepage} ></Route>
                    <Route exact path='/deposite' component={Depositepage} ></Route>
                    <Route exact path='/withdrawal' component={Withdrawalpage} ></Route>
+                   <Route exact path='/transaction/:userid' component={TransacionPage}></Route>
          
          
                    <Route exact path='/edit-note' component={EditPage} ></Route>

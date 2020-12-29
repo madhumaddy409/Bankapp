@@ -12,27 +12,55 @@ const {promisify} = require('util')
 
 exports.postSignup = async (req, res) =>  {
 
-    // const { username,password,account_type } =req.body
+    const { userName,password,account_type } =req.body
 
 
     // const salt = await bcrypt.genSalt(10);
     // User.password = await bcrypt.hash(password, salt);
-    // console.log(User.password)
+    console.log(userName)
 
-   await User.add(req.body)
-    .then(User => {
-        // res.status(200).json(User)
-        if(User){
-          res.status(200).json(User)
+    await User.userFind(userName)
+    .then(user => {
+        if(user){
+          res.status(200).json({message:"username already taken"})
+          console.log(User)
       }
       else{
-          res.status(204).json({message:"unable to signup"})
-      }
-    })
-    .catch(error =>{
-        res.status(500).json({message:"unable to perform operation"})
+          // res.status(204).json({message:"unable to signup"})
+                console.log("else",User)
+                User.add(req.body)
+                .then(User => {
+                    if(User){
+                      res.status(200).json({message:"user created succesfully"})
+                  }
+                  else{
+                      res.status(204).json({message:"unable to signup"})
+                  }
+                })
+                .catch(error =>{
+                    res.status(500).json({message:"unable to perform"})
 
-    })
+                })
+            }
+    }).catch(error =>{
+      res.status(500).json({error: {message:"unable to perform operation"}})
+
+  })
+
+
+  //  await User.add(req.body)
+  //   .then(User => {
+  //       if(User){
+  //         res.status(200).json(User)
+  //     }
+  //     else{
+  //         res.status(204).json({message:"unable to signup"})
+  //     }
+  //   })
+  //   .catch(error =>{
+  //       res.status(500).json({message:"unable to perform operation"})
+
+  //   })
 
 }
 

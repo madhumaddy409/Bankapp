@@ -35,7 +35,7 @@ const RegisterForm = ({dispatchRegisterAction}) => {
         event.preventDefault();
         if (isFormInvalid()) updateErrorFlags();
         else dispatchRegisterAction(userName,password,account_type,
-            ()=> toast.success("Account created succesfully"),
+            (message)=> toast.success(`message: ${message.message}`),
             (message) => toast.error(`Error: ${message}`))
     }
    
