@@ -10,6 +10,7 @@ return(
             <Link className="navbar-brand" to="/">
                 <div className="d-flex align-items-center">
                     <i className="fas fa-book fa-2x"></i>
+                    
                     <span className="h4 pl-2">
                         Bank Application 
                     </span>

@@ -109,7 +109,7 @@ const AdminUserList = ({dispatchUserListAction ,adminUserList } ) => {
                                        Transaction Details
                                     </Link></td>
                                     <td>{user.total_amount}</td>
-                                    <td id ="total-balance"></td>
+                                    
                        
                                 </tr>
                                     ))
@@ -131,7 +131,7 @@ const AdminUserList = ({dispatchUserListAction ,adminUserList } ) => {
      
             </div>
 
-            <div class="card users-listing-small mb-4">
+            <div class="card users-listing-small mb-4 ">
                 <div class="card-header text-center py-3">
                 <i class="fas fa-users fa-2x mr-" aria-hidden="true">
                 </i>
