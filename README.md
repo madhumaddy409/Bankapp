@@ -1,6 +1,6 @@
 # bankapp
 
-run the mysql useing(xamp)any other mysql server
+run the mysql server using(xamp)any other mysql server also fine
 
 database name:Bank
 database username:root
