@@ -17,5 +17,6 @@ npm install
 
 start redis server
 
-to start application 
+#To start application 
+cd backend
 yarn dev
